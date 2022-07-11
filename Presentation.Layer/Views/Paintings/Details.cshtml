@@ -1,0 +1,43 @@
+﻿@using Nix.Project.Models;
+@model PaintingVM
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Painting details";
+}
+ 
+<link rel="stylesheet" type="text/css" href="~/css/Details-style.css">
+
+ <div class="container-fluid">
+<div class="row">
+  <div class="container col-sm-8">
+
+    <div class="container dets-img"><img src="@Model.ImgURL"></div>
+  </div>
+
+  
+
+  <div class="container dets-info col-sm-4">
+        <ul class="dets-inform">
+            <li class="p-info1">@Model.Name</li>
+            <li class="p-info2">Autor:@Model.Autor</li>
+            <li class="p-info">Medium:@Model.Medium</li>
+            <li class="p-info">Size:@Model.Size</li>
+            <li class="p-info">Subject:@Model.Subject</li>
+            <li class="p-info">Style:@Model.Style</li>
+            <li class="p-info7">PriceUS$: @Model.Price </li>
+        </ul>
+      <button class="container items-button3" type="button">Add to cart</button>
+      <button class="container items-button3" type="button">Return to buying</button>
+  </div>
+</div>
+
+ <div class="container-fluid">
+      <b>@Model.About</b>
+  </div>
+<div class="container-fluid">
+      Painter profail
+  </div>
+
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

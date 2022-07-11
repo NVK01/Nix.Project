@@ -1,0 +1,75 @@
+﻿@using Nix.Project.Models;
+@model IEnumerable<PaintingVM>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "List of Paintings";
+}
+<link rel="stylesheet" type="text/css" href="~/css/Shop-items-page.css">
+ 
+<link rel="stylesheet" type="text/css" href="~/lib\bootstrap/dist/css/bootstrap-grid.css">
+<link rel="stylesheet" type="text/css" href="~/lib/bootstrap/dist/css/">
+
+
+
+<div class="container-fluid sort-panel">
+  <div class="container sort">
+    <label>SORT BY:</label>
+    <select class="sort-by">
+      <option>Low price</option>
+      <option>High price</option>
+    </select>
+  </div>
+</div>
+
+
+    <div class="container-fluid items-page">
+      <div class="row">
+        
+        <div class="col-sm-3 side-panel">FILTER BY
+            <div class="container ">
+                        <ul>
+                          <li>Subject</li>
+                          <li>Style</li>
+                          <li>Medium</li>
+                          <li>Price</li>
+                          <li>Size</li>
+                        </ul>
+            </div>
+
+        </div>
+        <div class="col-sm-9">
+            <div class="container shop-list">
+              <div class="row">
+                  @foreach(var item in Model){
+                <div class="container shop-item col-sm-4">
+                
+                  <div class="container shop-item-content">
+                      <img src="~/images/@Html.DisplayFor(modelItem =>item.ImgURL)" alt="Sample Photo" />
+                  </div>
+                  <div class="container shop-initem-content1">
+                        <ul>
+                          <li>@Html.DisplayFor(modelItem =>item.Name)</li>
+                          <li>@Html.DisplayFor(modelItem =>item.Autor)</li>
+                          <li>@Html.DisplayFor(modelItem =>item.Price)</li>
+                        </ul>
+                  </div>
+                  <div class="container shop-item-content2">
+                    <form  type="button" asp-controller=""  asp-action="" asp-route-id=" method="get">
+                        <button class="items-button1">Add to cart</button>
+                    </form>
+
+                  <form  type="button" asp-controller="Paintings"  asp-action="Details" asp-route-id="@item.PaintingId" method="get">
+                        <button class="items-button2">Details</button>
+                  </form>
+             
+                  </div>
+                </div>
+                }
+                  
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+
+
