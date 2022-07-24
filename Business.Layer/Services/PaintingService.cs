@@ -27,7 +27,7 @@ namespace Business.Layer.Services
             await _unitOfWork.Paintings.AddAsync(dataEntity);
         }
 
-        public async Task DeleteAsync(string id)
+        public async Task DeleteAsync(Guid id)
         {
             var data = await GetByIdAsync(id);
 
@@ -41,11 +41,11 @@ namespace Business.Layer.Services
             return _mapper.Map<List<Painting>, List<PaintingDTO>>(paintings);
         }
 
-        public async Task<PaintingDTO> GetByIdAsync(string id)
+        public async Task<PaintingDTO> GetByIdAsync(Guid id)
         {
             var paintings = await _unitOfWork.Paintings.GetByIdAsync(id);
-
-            return _mapper.Map<Painting, PaintingDTO>(paintings);
+            var data = _mapper.Map<Painting, PaintingDTO>(paintings);
+            return data;
         }
 
         public async Task UpdatePaintingAsync(PaintingDTO data)

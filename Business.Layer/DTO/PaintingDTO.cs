@@ -9,7 +9,8 @@ namespace Business.Layer.DTO
 {
     public class PaintingDTO
     {
-        public string? PaintingId { get; set; }
+        [Key]
+        public Guid PaintingId { get; set; }
         [Required]
         [StringLength(30, MinimumLength = 3)]
         public string? Name { get; set; }
@@ -37,7 +38,7 @@ namespace Business.Layer.DTO
         [StringLength(200, MinimumLength = 0)]
         public string? About { get; set; }
 
-        public string? ApplicationUserId { get; set; }
-        
+        public Guid? ApplicationUserId { get; set; }
+
     }
 }

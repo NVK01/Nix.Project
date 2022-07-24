@@ -10,10 +10,10 @@ namespace Data.Access.Layer.Entities
     public class Order
     {
         [Key]
-        public string? Id { get; set; } 
+        public Guid Id { get; set; } 
         public string? Email { get; set; }
 
-        public string? ApplicationUserId { get; set; }
+        public Guid? ApplicationUserId { get; set; }
 
         public List<OrderItem>? OrderItems { get; set; }
     }

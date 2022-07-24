@@ -1,0 +1,127 @@
+
+.custom-file-input{
+	border-radius: 30px;
+	background: black;
+}
+.label-item {
+	margin: 10px;
+	display: block;
+}
+
+.user-info {
+	background: white;
+	min-height: 400px;
+	padding: 0px;
+}
+.user-info1{
+	
+}
+.user-info2{
+	float: left;
+	background: yellowgreen;
+}
+.func-buttom{
+	border: none;
+	color: white;
+	margin: 20px;
+	display:inline-block;
+	float: left;
+	border-radius: 30px;
+	padding: 10px;
+	background: rgb(0, 0, 0);
+}
+.func-buttom:hover{
+	border: none;
+	color: rgb(0, 0, 0);
+	margin: 20px;
+	display:inline-block;
+	float: left;
+	border-radius: 30px;
+	padding: 10px;
+	background: rgb(0, 115, 196);
+}
+.func-buttom1{
+	border: none;
+	color: white;
+	margin-left:30px;
+	margin-top: 20px;
+	border-radius: 30px;
+	padding: 10px;
+	background: rgb(0, 0, 0);
+}
+.func-buttom1:hover{
+	border: none;
+	color: rgb(0, 0, 0);
+	color: white;
+	margin-left:30px;
+	margin-top: 20px;
+	border-radius: 30px;
+	padding: 10px;
+	background: rgb(0, 115, 196);
+}
+.info-input{
+	border: hidden;
+	border-bottom: solid;
+	border-color: gray;
+	min-width: 70%;
+	border-width: 2px;
+}
+.info-input:hover{
+	border: hidden;
+	border-bottom: solid;
+	border-color: black;
+	min-width: 70%;
+	border-width: 2px;
+}
+
+.info-pass{
+	border: hidden;
+	border-bottom: solid;
+	border-color: gray;
+	min-width: 35%;
+	border-width: 2px;
+}
+.info-pass:hover{
+	border: hidden;
+	border-bottom: solid;
+	border-color: gray;
+	min-width: 35%;
+	border-width: 2px;
+}
+input {outline:none;}
+.info-line{
+
+	margin-top: 30px;
+}
+.sub-buttom{
+	margin-left: 27%;
+	color: white;
+	background: black;
+	border-radius: 30px;
+	padding: 10px;
+	border: none;
+}
+.sub-buttom:hover{
+	margin-left: 27%;
+	color: black;
+	background: rgb(0, 115, 196);
+	border-radius: 30px;
+	padding: 10px;
+	border: none;
+}
+.sub-buttom-pass{
+	margin-left: 14%;
+	color: white;
+	background: black;
+	border-radius: 30px;
+	padding: 10px;
+	border: none;
+}
+.sub-buttom-pass:hover{
+	margin-left: 14%;
+	color: black;
+	background: rgb(0, 115, 196);
+	border-radius: 30px;
+	padding: 10px;
+	border: none;
+}

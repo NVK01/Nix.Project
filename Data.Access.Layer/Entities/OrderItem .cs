@@ -10,14 +10,14 @@ namespace Data.Access.Layer.Entities
     public class OrderItem
     {
         [Key]
-        public string? OrderItemId { get; set; }
+        public Guid? OrderItemId { get; set; }
         public int Amount { get; set; }
         public decimal Price { get; set; }
 
-        public string? PaintingId { get; set; }
+        public Guid PaintingId { get; set; }
         public Painting? Painting { get; set; }
 
-        public string? OrderId { get; set; }
+        public Guid OrderId { get; set; }
         public string? Order { get; set; }
     }
 }

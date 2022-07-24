@@ -8,11 +8,11 @@ namespace Business.Layer.DTO
 {
     public class ShoppingCartItemDTO
     {
-        public string? ShoppingCartItemId { get; set; }
-        public string? PaintingId { get; set; }
+        public Guid ShoppingCartItemId { get; set; }
+        public Guid PaintingId { get; set; }
        
         public int Amount { get; set; }
 
-        public string? ShoppingCartId { get; set; }
+        public Guid ShoppingCartId { get; set; }
     }
 }

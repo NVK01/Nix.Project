@@ -7,7 +7,9 @@ using Data.Access.Layer.Interfaces;
 using Data.Access.Layer.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Nix.Site.Mapping;
+using Presentation.Layer.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 ;
@@ -19,10 +21,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.EnableSen
     builder.Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("Data.Access.Layer")));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddIdentity<ApplicationUser, ApplicationUserRole>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders().AddDefaultUI(); 
 builder.Services.AddControllersWithViews();
-
+builder.Services.ConfigureApplicationCookie(p =>
+{
+    p.LoginPath = "/Account/Login";
+});
 
 builder.Services.AddRazorPages();
 
@@ -33,6 +38,9 @@ builder.Services.AddTransient<IGenericRepository<Painting>, GenericRepository<Pa
 
 builder.Services.AddAutoMapper(typeof(PLAutoMapperProfile).Assembly, typeof(BLAutoMapperProfile).Assembly);
 builder.Services.AddTransient<IPaintingService, PaintingService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<UserManager<ApplicationUser>>();
+builder.Services.AddScoped<SignInManager<ApplicationUser>>();
 
 //builder.Services.AddTransient<IGenericRepository<Order>, GenericRepository<Order>>();
 //builder.Services.AddTransient<IGenericRepository<OrderItem>, GenericRepository<OrderItem>>();

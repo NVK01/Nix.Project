@@ -2,6 +2,7 @@
 @model IEnumerable<PaintingVM>
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
+    Layout = "_Layout";
     ViewData["Title"] = "List of Paintings";
 }
 <link rel="stylesheet" type="text/css" href="~/css/Shop-items-page.css">
@@ -54,13 +55,14 @@
                         </ul>
                   </div>
                   <div class="container shop-item-content2">
-                    <form  type="button" asp-controller=""  asp-action="" asp-route-id=" method="get">
+                    <form  type="button" asp-controller=""  asp-action="" asp-route-id="" method="get">
                         <button class="items-button1">Add to cart</button>
                     </form>
-
+                     @if (Model != null)
+                                {
                   <form  type="button" asp-controller="Paintings"  asp-action="Details" asp-route-id="@item.PaintingId" method="get">
-                        <button class="items-button2">Details</button>
-                  </form>
+                                        <button class="items-button2">Details</button>
+                  </form> }
              
                   </div>
                 </div>

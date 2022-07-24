@@ -8,7 +8,7 @@ namespace Business.Layer.DTO
 {
     public class ShoppingCartDTO
     {
-        public string? ShoppingCartId { get; set; }
+        public Guid ShoppingCartId { get; set; }
         public List<ShoppingCartItemDTO>? ShoppingCartItems { get; set; }
     }
 }

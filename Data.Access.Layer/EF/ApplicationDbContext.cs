@@ -9,49 +9,56 @@ using System.Threading.Tasks;
 
 namespace Data.Access.Layer.EF
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationUserRole, Guid>
     {
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
         public DbSet<Order> Orders { get; set; }
-        //public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<Painting> Paintings { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
-            Database.EnsureDeleted();
+            //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // modelBuilder.Entity<ApplicationUser>().ToTable("ApplicationUser").HasKey(k => k.ApplicationUserId);
-
+            ////modelBuilder.Entity<ApplicationUser>().ToTable("ApplicationUser").HasKey(k => k.ApplicationUserId);
             modelBuilder.Entity<Painting>()
             .HasOne(p => p.ApplicationUser)
-            .WithMany(t => t.Paintings)
-            .IsRequired(false);
-            modelBuilder.Entity<ApplicationUser>().HasData(new List<ApplicationUser>
+            .WithMany(b => b.Paintings)
+            .HasForeignKey(p => p.ApplicationUserId)
+            .HasPrincipalKey(b => b.Id);
+
+            //modelBuilder.Entity<Painting>()
+            //.HasOne(p => p.ApplicationUser)
+            //.WithMany(t => t.Paintings)
+            //.IsRequired(false);
+
+            _=modelBuilder.Entity<ApplicationUser>().HasData(new List<ApplicationUser>
                 {
                     new ApplicationUser
                     {
-                        ApplicationUserId = "1234",
-                        Name = "assss",
-                        Password = "adDsxc122",
-                        SecondName = "moaaa",
+                        UserName = "Nazar",
+                        Id = Guid.NewGuid(),
                         PhoneNumber = "3400001111",
                         About = "adcasffvvbwfqq",
                         Email = "my123email@gmail.com",
-                        ImgURL = "aca"
-                    }
+                        IconURL = "aca",
+                        Paintings = new List<Painting> () 
+                        } 
 
-                });
+
+            });
             modelBuilder.Entity<Painting>().HasData(new List<Painting>
                 {
                     new Painting
                     {
-                        PaintingId = "1",
-                        ApplicationUserId = "1234",
+                        PaintingId = Guid.NewGuid(),
+                        ApplicationUserId = null,
                         Name = "acacac",
                         ImgURL = "slide1.jpg",
                         About = "awsdada",
@@ -64,8 +71,9 @@ namespace Data.Access.Layer.EF
                     },
                     new Painting
                     {
-                        PaintingId = "111",
-                        //ApplicationUserId = "1234",
+                        PaintingId = Guid.NewGuid(),
+                       
+                        ApplicationUserId = null,
                         Name = "acacac",
                         ImgURL = "slide1.jpg",
                         About = "awsdada",
@@ -78,8 +86,9 @@ namespace Data.Access.Layer.EF
                     },
                     new Painting
                     {
-                        PaintingId = "1111",
-                        //ApplicationUserId = "1234",
+                        PaintingId = Guid.NewGuid(),
+
+                        ApplicationUserId = null,
                         Name = "acacac",
                         ImgURL = "slide1.jpg",
                         About = "awsdada",
@@ -91,7 +100,7 @@ namespace Data.Access.Layer.EF
                         Subject = "adaaa"
                     }
 
-                });; ;
+                }); ; ;
 
 
 

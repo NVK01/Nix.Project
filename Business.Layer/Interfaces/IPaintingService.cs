@@ -9,10 +9,10 @@ namespace Business.Layer.Interfaces
 {
     public interface IPaintingService
     {
-        Task<PaintingDTO> GetByIdAsync(string id);
+        Task<PaintingDTO> GetByIdAsync(Guid id);
         Task<List<PaintingDTO>> GetAllAsync();
         Task AddNewPaintingAsync(PaintingDTO data);
         Task UpdatePaintingAsync(PaintingDTO data);
-        Task DeleteAsync(string id);
+        Task DeleteAsync(Guid id);
     }
 }

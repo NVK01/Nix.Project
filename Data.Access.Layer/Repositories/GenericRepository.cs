@@ -29,7 +29,7 @@ namespace Data.Access.Layer.Repositories
             return created.Entity;
         }
 
-        public async Task DeleteAsync(string id)
+        public async Task DeleteAsync(Guid id)
         {
             var item = await _dbSet.FindAsync(id);
             _=_dbSet.Remove(item);
@@ -46,7 +46,7 @@ namespace Data.Access.Layer.Repositories
             return await _dbSet.AsNoTracking().ToListAsync();
         }
 
-        public async Task<T> GetByIdAsync(string id)
+        public async Task<T> GetByIdAsync(Guid id)
         {
             return await _dbSet.FindAsync(id);
         }

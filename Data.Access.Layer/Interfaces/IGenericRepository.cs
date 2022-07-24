@@ -10,9 +10,9 @@ namespace Data.Access.Layer.Interfaces
     public interface IGenericRepository<T> where T : class
     {
         Task<T> AddAsync(T item);
-        Task<T> GetByIdAsync(string id);
+        Task<T> GetByIdAsync(Guid id);
         Task<List<T>> GetAllAsync();
-        Task DeleteAsync(string id);
+        Task DeleteAsync(Guid id);
         Task UpdateAsync(T item);
         Task<List<T>> FindAsync(Expression<Func<T, Boolean>> predicate);
         Task<int> GetCountAsync();

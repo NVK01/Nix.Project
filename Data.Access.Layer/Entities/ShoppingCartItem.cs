@@ -12,13 +12,13 @@ namespace Data.Access.Layer.Entities
     {
         [Key]
         
-        public string? ShoppingCartItemId { get; set; } 
-        public string? PaintingId { get; set; }
+        public Guid ShoppingCartItemId { get; set; } 
+        public Guid PaintingId { get; set; }
         [ForeignKey("PaintingId")]
         public Painting? Painting { get; set; }
         public int Amount { get; set; }
 
-        public string? ShoppingCartId { get; set; }
+        public Guid ShoppingCartId { get; set; }
 
     }
 }

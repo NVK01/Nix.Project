@@ -13,6 +13,7 @@ namespace Business.Layer.Mapping
     {
         public BLAutoMapperProfile()
         {
+            CreateMap<ApplicationUser, ApplicationUserInfoDTO>().ReverseMap();
             CreateMap<ApplicationUser, ApplicationUserDTO>().ReverseMap();
             //CreateMap<Order, OrderDTO>().ReverseMap();
             //CreateMap<OrderItem, OrderItemDTO>().ReverseMap();
