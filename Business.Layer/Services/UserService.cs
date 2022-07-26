@@ -126,12 +126,10 @@ namespace Business.Layer.Services
         {
             var id = (await _userManager.FindByNameAsync(username)).Id;
 
-            var paintings = await _unitOfWork.Paintings.GetAllAsync();
+            var paintings = await _unitOfWork.Paintings.FindAsync(u => u.ApplicationUserId == id);
 
-            var ownpaint = paintings.Where(u => u.ApplicationUserId == id);
 
-            return (List<PaintingDTO>)ownpaint;
-           
+            return _mapper.Map<List<Painting>, List<PaintingDTO>>(paintings);
         }
 
         

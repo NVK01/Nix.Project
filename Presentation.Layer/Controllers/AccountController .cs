@@ -147,7 +147,7 @@ namespace Presentation.Layer.Controllers
 
             return View();
         }
-
+ 
         private string UploadedFile(ApplicationUserInfoVM model)
         {
             string? uniqueFileName = null;
@@ -188,14 +188,11 @@ namespace Presentation.Layer.Controllers
         }
         
         [HttpGet]
-        public IActionResult GetUserPaintings()
+        public async Task<IActionResult> GetUserPaintings()
         {
-        var userpaint = _userService.UserList(this.User.Identity.Name);
+            var list = await _userService.UserList(this.User.Identity.Name);
 
-
-            return View(_mapper.Map<List<PaintingVM>>(userpaint));
+            return View(_mapper.Map<List<PaintingVM>>(list));
         }
-
-
     }
 }

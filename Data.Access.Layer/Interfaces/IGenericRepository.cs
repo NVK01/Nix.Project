@@ -14,7 +14,7 @@ namespace Data.Access.Layer.Interfaces
         Task<List<T>> GetAllAsync();
         Task DeleteAsync(Guid id);
         Task UpdateAsync(T item);
-        Task<List<T>> FindAsync(Expression<Func<T, Boolean>> predicate);
+        Task<List<T>> FindAsync(Expression<Func<T, bool>> predicate);
         Task<int> GetCountAsync();
     }
 }
